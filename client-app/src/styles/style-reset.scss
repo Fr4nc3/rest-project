@@ -1,0 +1,90 @@
+:root {
+  --blue: #28628F;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #BC4239;
+  --orange: #F7902B;
+  --yellow: #ffc107;
+  --green: #6CB33F;
+  --teal: #20c997;
+  --cyan: #3CB4E7;
+  --white: #fff;
+  --gray: #dfe6ec;
+  --gray-dark: #616668;
+  --primary: #6CB33F;
+  --secondary: #28628F;
+  --success: #6CB33F;
+  --info: #3CB4E7;
+  --warning: #ffc107;
+  --danger: #BC4239;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1048px;
+  --breakpoint-xl: 1300px;
+  --font-family-sans-serif: "Whitney Semibold", "Whitney A", "Whitney B", "Helvetica Neue", Arial, sans-serif;
+  --font-family-monospace: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+}
+*,
+::after,
+::before {
+  box-sizing: border-box
+}
+
+* {
+  &:active,
+  :focus {
+    outline: none !important;
+  }
+}
+html {
+  box-sizing: border-box;
+}
+*,:before,:after {
+  box-sizing: inherit;
+}
+html,
+body {
+  height: 100%;
+  font-family: "Whitney Semibold", "Whitney A",
+  "Whitney B",
+  "Helvetica Neue",
+  Arial,
+  sans-serif;
+}
+// some basic resets
+body {
+  padding: 0;
+  margin: 0;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #014163;
+}
+
+.app {
+  height: 100vh; // emmet h100vh
+}
+label {
+  margin-bottom: 0;
+}
+
+code {
+  white-space: nowrap;
+  border-radius: 10px;
+  padding: 0 8px 1px 8px;
+}
+
+.mat-menu-content {
+  mat-icon {
+    position: relative;
+    top: 2px;
+    left: 4px;
+  }
+}

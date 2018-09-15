@@ -1,0 +1,30 @@
+$toolbar-breakpoint: 600px;
+$fa-font-path: '../../node_modules/@fortawesome/fontawesome-free-webfonts/webfonts';
+$link-hover-decoration: none;
+$grid-breakpoints: (
+      xs: 0,
+      sm: 576px,
+      md: 768px,
+      lg: 992px,
+      xl: 1200px
+);
+@mixin for-size($size) {
+  @if $size==small-screen {
+    @media (max-width: 400px) {
+      // $fontSizeHeader: 1vw;
+      @content;
+    }
+  }
+
+  @else if $size==medium-screen {
+    @media (min-width: 401px) and (max-width:700px) {
+      @content;
+    }
+  }
+
+  @else if $size==large-screen {
+    @media (min-width: 701px) and (max-width: 900px) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+    "name": "rest-project",
+    "version": "1.0.0",
+    "private": true,
+    "license": "MIT",
+    "scripts": {
+        "postinstall": "run-p install:service install:client-app",
+        "install:service": "cd service && npm install",
+        "install:client-app": "cd client-app && npm install",
+        "start": "run-p start:service start:client-app",
+        "start:service": "npm run start --prefix service",
+        "start:client-app": "npm run start --prefix client-app",
+        "build": "run-p build:service build:client-app",
+        "build:service": "cd service && npm run build && cd ..",
+        "build:client-app": "cd client-app && npm run build && cd .."
+    },
+    "devDependencies": {
+        "npm-run-all": "^4.0.2",
+        "opn-cli": "^3.1.0"
+    }
+}

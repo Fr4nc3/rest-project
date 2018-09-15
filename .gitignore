@@ -1,0 +1,5 @@
+.vscode/*
+.DS_Store
+client-app/node_modules/*
+service/node_modules/*
+node_modules/*

@@ -1,0 +1,15 @@
+<section class="container vertical-center home-search-container">
+
+<form name="myForm" class="home-search-form" (ngSubmit)="onSubmit()">
+ <span class="home-search-span"><label  for="inlineFormInput">NYC Restaurant</label></span>
+<div class="input-group">
+  <input type="text" class="form-control" [(ngModel)]="search.word" name="word" autocomplete="off" placeholder=""  ng-minlength="3" ng-maxlength="100">
+  <span class="input-group-btn">
+    <button class="btn btn-success search-btn" type="submit">Search</button>
+  </span>
+</div>
+</form>
+</section>
+<res-grades></res-grades>
+
+

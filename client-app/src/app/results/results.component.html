@@ -1,0 +1,142 @@
+<section [ngClass]="'results-header '" [style.background]="getBackgroundRestaurant('./assets/images/restaurants/image_'+item+'.jpg')">
+<form class="results-search-form">
+<div class="input-group">
+  <input type="search" class="form-control" [(ngModel)]="searchInput" name="search" autocomplete="off" placeholder="" (keyup.enter)="onSubmit()">
+              <span class="input-group-append">
+                  <div class="input-group-text bg-white btn-fa-search" (click)="onSubmit()"><i class="fa fa-search"></i></div>
+            </span>
+</div>
+</form>
+
+<div class="container-main main-padding">
+<br>
+  <div class="search-results">
+      <div class="result-search-header bg-white">
+        Search:
+      </div>
+      <br>
+    <div class="result-search-word">
+        {{searchWord}}
+    </div>
+  </div>
+</div>
+
+</section>
+<section *ngIf="results?.total === 0 && results?.restaurants?.length === 0" class="no-results">
+<res-grades></res-grades> <!--- if there is no results or loading show grades --->
+</section>
+<section class="results-body bg-white main-padding" *ngIf="results?.restaurants?.length > 0">
+    <section class="container-results vertical-center">
+
+      <div class="d-flex flex-column">
+        <div class="p-2">
+          <div class="container-main filter-view-container font-weight-light">
+            <div class="float-left">
+            <button type="button" class="btn btn-primary btn-sm grade-button" (click)="gradeUpDown()">grade<mat-icon class="grade-icon">{{icon}}</mat-icon></button>
+            </div>
+            <div class="float-right view-results">
+            Viewing: <span>{{viewFrom}}</span> - <span>{{viewTo}}</span> of {{results.total}}
+            </div>
+          </div> <!--- filter-view --->
+        </div> <!--- p-2 --->
+        <div class="p-2">
+          <div class="container-main">
+            <div class="container-results-body vertical-center">
+              <div *ngFor="let restaurant of results.restaurants" class="restaurant-container-holder">
+              <div class="restaurant-container"  (click)="popUp(content, restaurant); $event.stopPropagation();">
+                <div class="restaurant-img">
+                <img src="{{restaurant.imageUrl}}" class="responsive-img">
+                </div><!--- restaurant-img --->
+
+             <div class="restaurant-info">
+
+                 <div class="d-flex flex-column">
+                   <div class="p-2 font-weight-light">
+                   <span class="res-name text-capitalize font-weight-bold">{{restaurant.name | lowercase}}</span> <br>
+                    <span class="res-info">{{restaurant.cuisine}}</span>	&middot; <span class="res-info res-price">$$$$</span> <br>
+                    <span class="res-info text-capitalize">{{restaurant.address | lowercase}}</span> <br>
+                    <span class="res-info">{{restaurant.phone}}</span>
+                   </div>
+                </div>
+               <div class="grade-box">
+                    <div class="vertical-center water-mark-result-holder">
+                    <div class="nyc-watermark-result vertical-center" [style.background]="getBackgroundRestaurant('./assets/images/seals/Nyc-seal-blue.png')">
+                    <img src="./assets/images/letters/{{restaurant.grade}}.png" [alt]="gradeName(restaurant.grade)" class="responsive-grade-img"></div>
+                    </div> <!--- watermark holder --->
+                     <div class="rest-grade-date vertical-center" [innerHTML]="dateHTML(restaurant.gradeDate)"></div>
+               </div>
+             </div> <!--- restaurant info --->
+            </div> <!--- restauran-container --->
+            </div> <!---  container holder --->
+
+            </div><!--- results-body --->
+          </div> <!--- container-main --->
+
+        </div> <!--- p-2 --->
+        <div class="p-2">
+
+        <div class="container-main container-pagination">
+          <div class="float-left">
+          <br>
+          <ngb-pagination class="d-flex justify-content-start" [collectionSize]="results.total" [(page)]="results.page" [ellipses]="false" [maxSize]="5" [pageSize]="results.limit"
+          size="sm" [rotate]="true" [boundaryLinks]="true" (pageChange)="pageChanged($event)" ></ngb-pagination>
+          </div>
+        </div>
+
+
+
+        </div>
+      </div>
+    </section>
+</section>
+
+<!--- modal template ---->
+<ng-template #content let-modal>
+     <div class="close-modal" (click)="modal.dismiss('Cross click')"> Close <span aria-hidden="true"  class="close-modal-icon font-weight-bold">&times;</span></div>
+<div class="rest-pop restaurant-container">
+                <div class="restaurant-img" [style.background]="getBackgroundRestaurant(popRest.imageUrl)">
+                </div><!--- restaurant-img --->
+
+            <div class="restaurant-info">
+
+            <div class="title-info">
+                 <div class="d-flex flex-column">
+                   <div class="p-2 font-weight-light">
+                   <span class="res-name text-capitalize font-weight-bold display-4">{{popRest.name | lowercase}}</span> <br>
+                    <span class="res-info">{{popRest.cuisine}}</span> &middot; <span class="res-info res-price">$$$$</span> <br>
+                    <span class="res-info text-capitalize">{{popRest.address | lowercase}}</span> <br>
+                    <span class="res-info">{{popRest.phone}}</span>
+                   </div>
+                </div>
+
+            </div>
+            <div class="grade-info">
+               <div class="grade-box-pop">
+                    <div class="vertical-center water-mark-result-holder">
+                    <div class="nyc-watermark-result vertical-center" [style.background]="getBackgroundRestaurant('./assets/images/seals/Nyc-seal-blue.png')">
+                    <img src="./assets/images/letters/{{popRest.grade}}.png" [alt]="gradeName(popRest.grade)"  class="responsive-grade-img"></div>
+                    </div> <!--- watermark holder --->
+               </div>
+            </div>
+
+            <hr class="rest-info-div" />
+            <div class="d-flex flex-column"> <!---  Restaurant extended info--->
+                   <div class="p-2 font-weight-light">
+                      <span class="res-info res-insp-title font-weight-bold">Inspections</span><br>
+                      <span class="res-info font-weight-bold" [innerHTML]="dateHTML(popRest.gradeDate)">date</span><br>
+                      <span class="res-info">Violations were cited in the following areas: </span><br>
+                      <div class="res-info res-tab">Violation code: {{popRest.inspection.violation_code}} <br>
+                      {{popRest.inspection.violation_desc}}
+                      </div>
+                      <span class="res-info">Score:  {{popRest.inspection.score}}</span> <br>
+                      <span class="res-info" [innerHTML]="gradeName(popRest.grade)"></span> <br>
+                      <span class="res-info">Grade Date:  {{popRest.inspection.grade_date_first}}</span> <br>
+                      <span class="res-info">Grade Date: {{popRest.gradeDate}}</span> <br>
+                      <span class="res-info">{{popRest.inspection.inspection_type}}</span> <br>
+                   </div>
+            </div>
+
+
+             </div> <!--- restaurant info --->
+            </div> <!--- restauran-container --->
+</ng-template>

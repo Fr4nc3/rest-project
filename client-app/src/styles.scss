@@ -1,0 +1,253 @@
+@import '../node_modules/bootstrap/scss/bootstrap-reboot';
+@import '../node_modules/bootstrap/scss/bootstrap-grid';
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+@import '../node_modules/@angular/material/theming';
+@import './styles/style-variables';
+@import './styles/style-reset';
+
+.app-loading {
+  .logo {
+    width: 100px;
+    height: 100px;
+    background: url(./assets/logo.png) center center no-repeat;
+  }
+}
+
+$brandPrimary: #0088CC;
+$keyBreakpoint: 37.5em;
+
+input[type="text"] {
+  width: 100%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-radius: 5px;
+  border: solid 1px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.main-padding {
+  padding-left: 5rem;
+  padding-right: 5rem;
+
+  @include for-size(small-screen) {
+    padding-left: inherit !important;
+    padding-right: inherit;
+  }
+
+  @include for-size(medium-screen) {
+    padding-left: inherit;
+    padding-right: inherit;
+  }
+
+  @include for-size(large-screen) {
+    padding-left: inherit;
+    padding-right: inherit;
+  }
+}
+
+.home {
+  min-height: 18vw;
+  background: url(./assets/images/restaurants/image_7.jpg) no-repeat center;
+  text-align: center;
+  height: 65%
+}
+
+@media screen and (max-width: 531px) {
+  .container-home {
+    display: flex;
+    flex-flow: column;
+  }
+}
+
+@media (min-width:768px) {
+  .home {
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed
+  }
+}
+
+.results-header {
+  min-height: 15vw;
+  background-repeat: no-repeat !important;
+}
+
+form .hint {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  font-weight: bold;
+}
+
+button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: $brandPrimary;
+  border: 0;
+  color: #fff;
+  padding: 1em 2em;
+  border-radius: 0 5px 5px 0;
+  height: 100%;
+
+  &:hover {
+    background: darken($brandPrimary, 10%);
+  }
+}
+
+.search-btn {
+  z-index: 100;
+}
+
+.page-item.active .page-link {
+  background-color: #6CB33F !important;
+  border-color: #6CB33F !important;
+  color: #fff !important;
+}
+
+.page-link:hover {
+  color: #6CB33F !important;
+}
+
+.modal-dialog {
+  margin-top: 3rem !important;
+}
+
+.page-link {
+  color: #6CB33F !important;
+
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #6cb33f;
+  border-color: #6cb33f;
+  position: inherit !important
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #5b9735;
+  border-color: #558d32
+}
+
+.thomas-bar {
+  background-color: #00344C;
+  padding-left: 4em;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+  box-shadow: 0 0 0 .2rem rgba(108, 179, 63, .5)
+}
+
+.btn-fa-search {
+  cursor: pointer;
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #fff;
+  background-color: #6cb33f;
+  border-color: #6cb33f
+}
+
+.thomas-logo {
+  display: block;
+  text-align: left;
+  position: relatve;
+  z-index: 10000;
+  width: 8rem;
+  float: left;
+  height: 2rem;
+  padding: 0 1rem
+}
+
+
+.thomas-logo img {
+  width: 100%;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all .2s linear
+}
+
+.vertical-center {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  width: 100%;
+
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+// grade home boxes
+.container-home div {
+  width: 12vw;
+  height: 12vw;
+}
+
+.water-mark-holder {
+  height: 13vw !important;
+  width: 13vw !important;
+  background-color: #fff;
+  padding: 1.5rem;
+  margin: 10px;
+}
+
+.nyc-watermark {
+  background: url(./assets/images/seals/Nyc-seal-blue.png) no-repeat center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  height: 12vw;
+  width: 12vw;
+  background-color: #fff;
+  padding: 0.5rem;
+}
+
+// end grade boxes
+.flex-column {
+  width: inherit !important;
+}
+
+// open modal leave scroll
+.modal-open {
+  overflow-y: scroll;
+}
+
+.modal-content {
+  border-radius: 0 !important;
+}
+
+body {
+  padding-right: 0px !important;
+}
+
+@media screen and (max-width: 531px) {
+  .modal-dialog {
+    margin-top: 2rem !important;
+  }
+}
+
+@media screen and (min-width: 532px) and (max-width: 1077px) {
+    .modal-dialog {
+      margin-top: 2rem !important;
+    }
+}
