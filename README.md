@@ -29,7 +29,7 @@ module.exports = {
 }
 ```
 
-### ßKey Factors:
+### Key Factors:
 
 - The API full search will work only if the fulltext index exist associated to field searchText
 
@@ -118,6 +118,7 @@ client-app/src/app/results/results.component.scss
 ![Screenshot](images/results_small.png)
 
  - Individual
+ 
 ![Screenshot](images/result_individual_small.png)
 
 - Medium
@@ -130,6 +131,7 @@ client-app/src/app/results/results.component.scss
 ![Screenshot](images/results_medium.png)
 
 - Individual
+
 ![Screenshot](images/result_individual_medium.png)
 
 
