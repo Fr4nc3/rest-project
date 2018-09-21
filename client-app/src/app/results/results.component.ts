@@ -26,6 +26,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
   private popRest: Restaurant;
   private icon: string;
   private searchInput: string;
+  private loading: boolean;
   constructor(
     private sanitizer: DomSanitizer,
     private modalService: NgbModal,
@@ -37,7 +38,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // this.search = this.dataservice.search; // paramters from services
-
+    this.loading = true;
     if (this.activeRouter.snapshot.queryParams !== null) {
       this.search = {
         word: this.activeRouter.snapshot.queryParams.word ? this.activeRouter.snapshot.queryParams.word : '',
@@ -100,6 +101,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
   // this method is trigered when the User select a new page from pagination.
   pageChanged(page) {
     this.search.page = page;
+    this.loading = true;
     this.loadResults();
   }
   // this method allow insert html style image
@@ -143,6 +145,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
             : viewToTemp;
         this.searchWord = this.search.word;
         this.searchInput = this.search.word;
+        this.loading = false;
         // updte url every new search or page change easy for share the URL
         this.location.go('/results', `word=${this.search.word}&grade=${this.search.grade}&page=${this.search.page}`);
 
@@ -153,6 +156,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
   public gradeUpDown() {
     this.search.grade = this.search.grade === '1' ? '-1' : '1';
     this.icon = this.search.grade === '1' ? 'arrow_drop_down' : 'arrow_drop_up';
+    this.loading = true;
     this.loadResults();
   }
   // Method to search from input search bar on the header.
@@ -161,6 +165,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
       alert('Search for word must be longer than 3 characters');
       return false;
     }
+    this.loading = true;
     this.search.word = this.searchInput;
     this.search.grade = '1';
     this.icon = 'arrow_drop_down';

@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppComponent } from './app.component';
 import { ResultsComponent } from './results/results.component';
 import { HomeComponent } from './home/home.component';
@@ -24,7 +25,7 @@ import { GradesComponent } from './grades/grades.component';
     SiteFooterComponent,
     GradesComponent
   ],
-  imports: [BrowserModule, HttpModule, FormsModule, routing, NgbModule, MatIconModule],
+  imports: [BrowserModule, HttpModule, FormsModule, routing, NgbModule, MatIconModule, MatProgressSpinnerModule],
   providers: [RestService, DataService],
   bootstrap: [AppComponent]
 })

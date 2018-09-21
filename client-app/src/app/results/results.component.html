@@ -22,10 +22,30 @@
 </div>
 
 </section>
-<section *ngIf="results?.total === 0 && results?.restaurants?.length === 0" class="no-results">
-<res-grades></res-grades> <!--- if there is no results or loading show grades --->
+<section *ngIf="loading" class="load-section bg-white">
+<div class="loader">
+  <div class="d-flex flex-column">
+        <div class="p-2 vertical-center">
+             <h2>Loading...</h2>
+        </div>
+        <div class="p-2 vertical-center">
+           <mat-spinner mode="indeterminate" color="primary"></mat-spinner>
+        </div>
+  </div>
+</div>
 </section>
-<section class="results-body bg-white main-padding" *ngIf="results?.restaurants?.length > 0">
+<section *ngIf="results?.total === 0 && results?.restaurants?.length === 0 && !loading" class="no-results bg-white">
+  <div class="d-flex flex-column">
+        <div class="p-2 vertical-center">
+             <h2>No Results</h2>
+        </div>
+        <div class="p-2 vertical-center no-results-grade">
+           <res-grades></res-grades>
+        </div>
+  </div>
+
+</section>
+<section class="results-body bg-white main-padding" *ngIf="results?.restaurants?.length > 0 && !loading" >
     <section class="container-results vertical-center">
 
       <div class="d-flex flex-column">

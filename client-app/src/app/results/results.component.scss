@@ -1,16 +1,15 @@
 $fontSizeHeader: 2.6vw;
-.no-results .container-home {
-      min-height: 18vw !important;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      right: 0;
-      top: 0;
+.loader{
+  height: inherit;
 }
-.no-results{
-      overflow: hidden;
-      position: relative;
-      width: 100%;
+.load-section{
+  height: 100%;
+}
+.res-grades{
+  width:inherit !important;
+}
+.no-results-grade{
+  padding: 0 !important
 }
 // restaurant holder
 .water-mark-result-holder {
