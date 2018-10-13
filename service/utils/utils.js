@@ -50,7 +50,7 @@ const inspectionsBuilder = (inspections) => {
     if (inspections.length === 0) {
         return inspectionBuilder(null, null);
 
-    } else if (inspections.length === 0) {
+    } else if (inspections.length === 1) {
         return inspectionBuilder(inspections[0], inspections[0]);
     } else {
         // implement sort inspections decreasing 
